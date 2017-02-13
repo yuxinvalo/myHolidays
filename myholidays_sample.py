@@ -36,8 +36,8 @@ def handlepretexts(mode, text):
     elif mode == 'g':
         with open(mydict['path'], 'r') as fb:
             for line in fb.readlines():
-                if text in line[:1]:
-                    return line[2:]
+                if text in line[:2]:
+                    return line[3:]
             fb.close()
 
 
@@ -70,9 +70,9 @@ if __name__ == '__main__':
         handlepretexts('a',arguments['<pretext>'])
 
     if gen:
-        text = handlepretexts('g','')
+        text = handlepretexts('g',arguments['<number>'])
         print("you choice pretext : %s" %text)
         subject = mydict['subject']
         sendemail(mydict['frommail'], mydict['secretariat'], subject, text, arguments['<time>'] )
 
-    print(mydict)
+    #print(mydict)
